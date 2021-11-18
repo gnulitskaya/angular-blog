@@ -7,3 +7,47 @@ body{
 h1, body {
   margin: 0;
 }
+a {
+  color: var(--primary-color);
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    color: #666;
+  }
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  min-height: 70px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  padding: 5px 20px;
+}
+.navbar.main {
+  justify-content: center;
+}
+.btn {
+  border: none;
+  background-color: $blue;
+  border-radius: 20px;
+  color: white;
+  padding: 6px 15px;
+  min-width: 100px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: fit-content;
+}
+.navbar-list{
+  display: flex;
+  align-items: center;
+  li+li {
+    margin-left: 20px;
+  }
+}
