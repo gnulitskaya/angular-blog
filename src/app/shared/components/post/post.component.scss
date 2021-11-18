@@ -1,0 +1,28 @@
+$blue: #0057ff;
+
+.card {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 10px;
+  border: none;
+}
+.btn {
+  border: none;
+  background-color: $blue;
+  border-radius: 20px;
+  color: white;
+  padding: 6px 15px;
+  min-width: 100px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: fit-content;
+}
+.card-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  border-bottom: none;
+  background-color: transparent;
+}
