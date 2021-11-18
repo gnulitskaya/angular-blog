@@ -1,2 +1,19 @@
-<h1>Admin</h1>
-<router-outlet></router-outlet>
+<nav class="navbar bg-primary">
+  <h1><a routerLink="/">Admin</a></h1>
+
+  <ul class="navbar-list">
+    <li>
+      <a [routerLink]="['/admin', 'dashboard']">Home</a>
+    </li>
+    <li>
+      <a [routerLink]="['/admin', 'create']">Create</a>
+    </li>
+    <li>
+      <a href="#" (click)="logout($event)">Logout</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
