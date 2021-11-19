@@ -1,15 +1,22 @@
-<form class="mt-5 login-form">
+<form class="mt-5 login-form" [formGroup]="form" (ngSubmit)="submit()">
   <h2>Login</h2>
 
-  <div class="form-control">
+  <div class="form-control"
+  [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
+  >
     <label for="email">Email:</label>
     <input type="email" id="email">
-    <div class="validation">
-      <small>error</small>
+    <div
+      *ngIf="form.get('email').touched && form.get('email').invalid"
+      class="validation">
+      <small *ngIf="form.get('email').errors.required">Please enter an email address</small>
+      <small *ngIf="form.get('email').errors.email">Invalid email address</small>
     </div>
   </div>
 
-  <div class="form-control">
+  <div class="form-control"
+   [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}"
+  >
     <label for="email">Password:</label>
     <input type="email" id="password">
     <div class="validation">
@@ -17,6 +24,8 @@
     </div>
   </div>
 
-  <button type="submit" class="btn">Login</button>
+  <button
+    [disabled]="form.invalid"
+    type="submit" class="btn">Login</button>
 
 </form>
