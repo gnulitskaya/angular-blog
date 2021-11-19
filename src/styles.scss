@@ -43,11 +43,39 @@ ul {
   cursor: pointer;
   margin-top: 10px;
   width: fit-content;
+  border: 2px solid transparent;
+  transition: $transition-base;
+  &:hover {
+    background-color: $white;
+    color: $blue;
+    border: 2px solid $blue;
+  }
+}
+.login-form {
+  .btn {
+    font-weight: $font-weight-bold;
+  }
 }
 .navbar-list{
   display: flex;
   align-items: center;
-  li+li {
-    margin-left: 20px;
+  li {padding: 5px 20px;}
+  li.active {
+    background-color: white;
+    border-radius: 5px;
+    a {color: $blue;
+      font-weight: $font-weight-bold;}
   }
+  li+li {
+    margin-left: 10px;
+  }
+}
+input {
+  width: 100%;
+  border-radius: 5px;
+  border-color: $gray-400;
+  border-style: double;
+}
+.form-control{
+  border: none;
 }
