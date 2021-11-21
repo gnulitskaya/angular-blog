@@ -1,3 +1,5 @@
+import { SharedModule } from './../shared/components/shared.module';
+import { AuthService } from './shared/components/admin-layout/services/auth.service';
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
@@ -20,6 +22,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild([
       {path: '', component: AdminLayoutComponent, children: [
           {path: '', redirectTo: '/admin/login', pathMatch: 'full'},
@@ -32,6 +35,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     ])
   ],
   exports: [RouterModule],
+  providers: [AuthService]
 })
 
 export class AdminModule {
