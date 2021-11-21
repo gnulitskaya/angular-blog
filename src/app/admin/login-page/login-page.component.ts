@@ -1,5 +1,5 @@
 import { AuthService } from './../shared/components/admin-layout/services/auth.service';
-import { User } from './../../shared/components/interfaces';
+import { User } from './../../shared/interfaces';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -36,7 +36,8 @@ export class LoginPageComponent implements OnInit {
 
     const user: User = {
       email: this.form.value.email,
-      password: this.form.value.password
+      password: this.form.value.password,
+      returnSecureToken: false
     }
 
     this.auth.login(user).subscribe(() => {
