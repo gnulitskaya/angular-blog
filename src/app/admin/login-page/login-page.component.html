@@ -1,5 +1,11 @@
 <form class="mt-5 login-form" [formGroup]="form" (ngSubmit)="submit()">
   <h2>Login</h2>
+<!--  вывод ошибки
+сервис auth у него есть переменаая error, которя является стримом
+стрим можем обрабатывать с мопощью пайпа async
+пропускаем через async пайп стрим и выводим значение стрима в error
+-->
+  <div class="alert alert-danger" *ngIf="auth.error$ | async as error">{{error}}</div>
 
   <div
     class="form-control"
