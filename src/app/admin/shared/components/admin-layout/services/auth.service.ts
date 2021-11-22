@@ -1,14 +1,17 @@
 import { environment } from './../../../../../../environments/environment';
 import { User, FbAuthResponse } from './../../../../../shared/interfaces';
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {Observable, Subject, throwError} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
 
 @Injectable()
 
 export class AuthService {
   constructor(private http: HttpClient) {}
+  // $ - стрим
+  // Subject тот же Observable, дополнительно можем эмитить у него события
+  public error$: Subject<string> = new Subject<string>()
 
   //получение токена
   get token(): string | null {
@@ -29,7 +32,8 @@ export class AuthService {
     //post запрос чтобы авторизоваться
     return this.http.post<FbAuthResponse>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, user)
       .pipe (
-        tap(this.setToken)
+        tap(this.setToken),
+        catchError(this.handleError.bind(this))
       )
   }
 
@@ -40,6 +44,26 @@ export class AuthService {
   //авторизован пользователь или нет
   isAuthenticated(): boolean {
     return !!this.token
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    //обработка ошибки
+    const {message} = error.error.error
+    console.log(message)
+    switch (message) {
+      case 'INVALID_EMAIL':
+        //диспачим то сообщение которое необходимо вывести
+        this.error$.next('Wrong email')
+        break
+      case 'INVALID_PASSWORD':
+        this.error$.next('Wrong password')
+        break
+      case 'EMAIL_NOT_FOUND':
+        this.error$.next('Do not have this email')
+        break
+    }
+    //возвращение observable из ошибки
+    return throwError(error)
   }
 
   //чтобы изменять токен
