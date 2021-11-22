@@ -10,10 +10,14 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  //получение токена
   get token(): string | null {
+    //дата истечения токена
     const storedExpDate = localStorage.getItem('fb-token-exp');
     const expDate: Date | null = storedExpDate != null ? new Date(storedExpDate) : null;
+    //если текушая дата больше чем дата истечения токена (по времени дальше, чем дата жизни токена)
     if (expDate == null || new Date() > expDate) {
+      //очистка логики по токену
       this.logout()
       return null;
     }
