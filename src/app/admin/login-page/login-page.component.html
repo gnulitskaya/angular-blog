@@ -41,6 +41,6 @@
   <button
     type="submit"
     class="btn btn-primary mt-3"
-    [disabled]="form.invalid"
+    [disabled]="form.invalid || submitted"
   >Login</button>
 </form>
