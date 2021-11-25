@@ -1,5 +1,6 @@
 import { Environment } from './interface';
 export const environment: Environment = {
   production: true,
-  apiKey: 'AIzaSyDOKAB0X6d1tl_3BLQKwU0CR3EIxDpEI1A'
+  apiKey: 'AIzaSyA9s5bPrusLo6_WnatLY3ud2SNjcLtb708',
+  fbDbUrl: 'https://blog-f5034-default-rtdb.firebaseio.com'
 };

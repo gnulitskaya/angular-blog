@@ -61,6 +61,9 @@ export class AuthService {
       case 'EMAIL_NOT_FOUND':
         this.error$.next('Do not have this email')
         break
+      case 'USER_DISABLED':
+        this.error$.next('User disabled')
+        break
     }
     //возвращение observable из ошибки
     return throwError(error)

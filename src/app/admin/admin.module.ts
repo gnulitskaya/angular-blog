@@ -1,4 +1,4 @@
-import { SharedModule } from './../shared/components/shared.module';
+import { SharedModule } from './../shared/shared.module';
 import { AuthService } from './shared/services/auth.service';
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
