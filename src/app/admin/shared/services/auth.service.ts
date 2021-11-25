@@ -5,7 +5,7 @@ import {catchError, tap} from 'rxjs/operators';
 import {environment} from "../../../../environments/environment";
 import {FbAuthResponse, User} from "../../../shared/interfaces";
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 
 export class AuthService {
   constructor(private http: HttpClient) {}
