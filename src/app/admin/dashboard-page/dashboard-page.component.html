@@ -1,1 +1,35 @@
-<p>dashboard-page works!</p>
+<div *ngIf="posts?.length; else loading">
+  <div class="form-control mt-5">
+    <input type="text" placeholder="Find post...">
+  </div>
+<table class="mt-2">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Author</th>
+    <th>Title</th>
+    <th>Date</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let post of posts; let idx = index">
+    <td>{{ idx + 1 }}</td>
+    <td>{{ post.author }}</td>
+    <td>{{ post.title }}</td>
+    <td>{{ post.date | date:'medium' }}</td>
+    <td>
+      <button class="btn btn-primary me-2"
+      [routerLink]="['/admin', 'post', post.id, 'edit']">Open</button>
+      <a class="btn btn-danger" (click)="remove(post.id)">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+<ng-template #loading>
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+</ng-template>
