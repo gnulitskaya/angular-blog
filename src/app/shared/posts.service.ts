@@ -19,4 +19,19 @@ export class PostsService {
         }
       }))
   }
+  //получение всех постов, которые есть в базе
+  getAll(): Observable<Post[]> {
+    return this.http.get(`${environment.fbDbUrl}/posts.json`) //получение данных с сервера
+      //распарсить их
+      .pipe(map((response:{[key: string]: any}) => {
+        return Object
+          .keys(response) //пробежаться по объекту response, получим массив айдишников
+          //преобразование в другой объект
+          .map(key => ({
+            ...response[key],
+            id: key,
+            date: new Date(response[key].date)
+          }))
+      }))
+  }
 }

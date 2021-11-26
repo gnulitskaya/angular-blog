@@ -36,7 +36,6 @@ ul {
 }
 .btn {
   border: none;
-  background-color: $blue;
   border-radius: 20px;
   color: white;
   padding: 6px 15px;
@@ -46,11 +45,11 @@ ul {
   width: fit-content;
   border: 2px solid transparent;
   transition: $transition-base;
-  &:hover {
-    background-color: $white;
-    color: $blue;
-    border: 2px solid $blue;
-  }
+  //&:hover {
+  //  background-color: $white;
+  //  color: $blue;
+  //  border: 2px solid $blue;
+  //}
 }
 .login-form {
   .btn {
@@ -80,4 +79,33 @@ input {
 .form-control{
   border: none;
   padding: 10px 0;
+}
+.loader-wrapper {
+  position: absolute;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  top: 20%;
+}
+.loader {
+  width:45px;
+  height:45px;
+  padding:0px;
+  border-radius:100%;
+  border:5px solid;
+  border-top-color: $blue;
+  border-bottom-color: $gray-500;
+  border-left-color: $blue;
+  border-right-color: $gray-500;
+  -webkit-animation: loader4 1s ease-in-out infinite;
+  animation: loader 1s ease-in-out infinite;
+}
+@keyframes loader {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+@-webkit-keyframes loader {
+  from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}
 }
