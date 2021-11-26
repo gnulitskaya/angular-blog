@@ -11,6 +11,8 @@ import {Subscription} from "rxjs";
 export class DashboardPageComponent implements OnInit, OnDestroy{
   posts: Post[] = []
   pSub?: Subscription
+  dSub?: Subscription
+  searchStr = ''
   constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
@@ -19,13 +21,22 @@ export class DashboardPageComponent implements OnInit, OnDestroy{
     })
   }
 
+  remove(id: any) {
+    this.dSub = this.postsService.remove(id).subscribe( () => {
+      //переопределение списка постов
+      //удалим ненужный элемент из массива
+      this.posts = this.posts.filter(post => post.id !== id)
+    })
+  }
+
   ngOnDestroy(): void {
     if(this.pSub) {
       this.pSub.unsubscribe()
     }
+    if(this.dSub) {
+      this.dSub.unsubscribe()
+    }
   }
 
-  remove(id: any) {
 
-  }
 }
