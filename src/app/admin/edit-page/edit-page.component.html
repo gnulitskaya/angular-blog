@@ -1,1 +1,33 @@
-<p>edit-page works!</p>
+<div *ngIf="form; else loading">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div
+      class="form-control"
+      [ngClass]="{invalid: form.get('email')?.touched && form.get('email')?.invalid}"
+    >
+      <label for="title">Title:</label>
+      <input id="title" type="text" formControlName="title" required>
+      <div
+        *ngIf="form.get('title')?.invalid && form.get('title')?.touched"
+        class="validation"
+      >
+        <small *ngIf="form.controls.title?.errors?.required === true">
+          Please enter the title
+        </small>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <quill-editor formControlName="text"></quill-editor>
+    </div>
+
+    <button class="btn btn-primary"
+    type="submit"
+    [disabled]="form.invalid">Save</button>
+  </form>
+</div>
+
+<ng-template #loading>
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+</ng-template>
