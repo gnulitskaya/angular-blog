@@ -1,3 +1,4 @@
+import { AlertService } from './../shared/services/alert.service';
 import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
@@ -19,7 +20,8 @@ export class EditPageComponent implements OnInit, OnDestroy {
 
   uSub?: Subscription
   constructor(private route: ActivatedRoute,
-              private postsService: PostsService) { }
+              private postsService: PostsService,
+              private alertService: AlertService) { }
   ngOnDestroy() {
     if (this.uSub) {
       this.uSub.unsubscribe()
@@ -52,6 +54,7 @@ export class EditPageComponent implements OnInit, OnDestroy {
       title: this.form.value.title
     }).subscribe(() => {
       this.submitted = false
+      this.alertService.success('Post have been updated!')
     })
   }
 }

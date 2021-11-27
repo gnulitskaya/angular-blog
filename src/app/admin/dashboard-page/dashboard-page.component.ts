@@ -1,3 +1,4 @@
+import { AlertService } from './../shared/services/alert.service';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PostsService} from "../../shared/posts.service";
 import {Post} from "../../shared/interfaces";
@@ -13,7 +14,9 @@ export class DashboardPageComponent implements OnInit, OnDestroy{
   pSub?: Subscription
   dSub?: Subscription
   searchStr = ''
-  constructor(private postsService: PostsService) { }
+  constructor(
+    private postsService: PostsService,
+    private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.postsService.getAll().subscribe(posts => {
@@ -26,6 +29,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy{
       //переопределение списка постов
       //удалим ненужный элемент из массива
       this.posts = this.posts.filter(post => post.id !== id)
+      this.alertService.warning('Post have been deleted!')
     })
   }
 
