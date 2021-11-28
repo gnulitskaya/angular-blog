@@ -17,7 +17,7 @@
     <td>{{ idx + 1 }}</td>
     <td>{{ post.author }}</td>
     <td>{{ post.title }}</td>
-    <td>{{ post.date | date:'medium' }}</td>
+    <td>{{ post.date | date:'medium':'':'ru' }}</td>
     <td>
       <button class="btn btn-primary me-2"
       [routerLink]="['/admin', 'post', post.id, 'edit']">Open</button>
