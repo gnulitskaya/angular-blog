@@ -1,4 +1,4 @@
-<div *ngIf="form; else loading">
+<div *ngIf="form; else loading" class="mt-4">
   <form [formGroup]="form" (ngSubmit)="submit()">
     <div
       class="form-control"
@@ -23,6 +23,7 @@
     <button class="btn btn-primary"
     type="submit"
     [disabled]="form.invalid || submitted">Save</button>
+    <button class="btn btn-secondary ms-2" routerLink="/admin/dashboard" >Back</button>
   </form>
 </div>
 

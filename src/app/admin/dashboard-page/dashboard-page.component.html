@@ -2,30 +2,30 @@
   <div class="form-control mt-5">
     <input type="text" placeholder="Find post..." [(ngModel)]="searchStr">
   </div>
-<table class="mt-2">
-  <thead>
-  <tr>
-    <th>#</th>
-    <th>Author</th>
-    <th>Title</th>
-    <th>Date</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let post of posts | searchPipe:searchStr; let idx = index">
-    <td>{{ idx + 1 }}</td>
-    <td>{{ post.author }}</td>
-    <td>{{ post.title }}</td>
-    <td>{{ post.date | date:'medium':'':'ru' }}</td>
-    <td>
-      <button class="btn btn-primary me-2"
-      [routerLink]="['/admin', 'post', post.id, 'edit']">Open</button>
-      <a class="btn btn-danger" (click)="remove(post.id)">Delete</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
+  <table class="mt-2">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Author</th>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let post of posts | searchPipe:searchStr; let idx = index">
+      <td data-label="#">{{ idx + 1 }}</td>
+      <td data-label="Author">{{ post.author }}</td>
+      <td data-label="Title">{{ post.title }}</td>
+      <td data-label="Date">{{ post.date | date:'short' }}</td>
+      <td class="actions" data-label="Actions">
+        <button class="btn btn-primary"
+                [routerLink]="['/admin', 'post', post.id, 'edit']">Open</button>
+        <a class="btn btn-danger" (click)="remove(post.id)">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
 <ng-template #loading>

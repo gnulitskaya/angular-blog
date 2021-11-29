@@ -10,6 +10,7 @@ $blue: #0057ff;
 .card-header{
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   padding: 0;
   border-bottom: none;
