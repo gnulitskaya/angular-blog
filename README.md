@@ -1,5 +1,6 @@
 # Blog
 
+https://blog.gnulitskaya.ru/
 https://blog.gnulitskaya.ru/admin
 
 email: l@mail.ru
